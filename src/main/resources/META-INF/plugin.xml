@@ -1,0 +1,53 @@
+<idea-plugin version="2">
+	<id>org.antlr.jetbrains.jarl</id>
+	<name>JARL IntelliJ Plugin</name>
+	<version>0.1</version>
+	<vendor email="alemgarcia95@gmail.com">ANTLR Project JARL IntelliJ Plugin</vendor>
+
+	<description><![CDATA[
+  <p>JARL plugin</p>
+
+<p>
+  ]]></description>
+
+	<change-notes><![CDATA[
+
+]]>
+	</change-notes>
+
+	<!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+	<idea-version since-build="133"/> <!-- requires 13.x, 14.x, 15.x -->
+
+	<!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+		 on how to target different products -->
+	<!-- uncomment to enable plugin in all products -->
+	<depends>com.intellij.modules.lang</depends>
+
+	<application-components>
+	</application-components>
+
+	<project-components>
+		<component>
+			<implementation-class>org.antlr.jetbrains.jarl.JarlPluginController</implementation-class>
+		</component>
+	</project-components>
+
+	<actions>
+	</actions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<fileTypeFactory implementation="org.antlr.jetbrains.jarl.JarlFileTypeFactory"/>
+		<lang.syntaxHighlighterFactory key="JARL" implementationClass="org.antlr.jetbrains.jarl.JarlSyntaxHighlighterFactory"/>
+
+		<lang.parserDefinition language="JARL" implementationClass="org.antlr.jetbrains.jarl.JarlParserDefinition"/>
+		<lang.ast.factory language="JARL" implementationClass="org.antlr.jetbrains.jarl.JarlASTFactory"/>
+
+		<lang.psiStructureViewFactory language="JARL" implementationClass="org.antlr.jetbrains.jarl.structview.JarlStructureViewFactory"/>
+
+		<colorSettingsPage implementation="org.antlr.jetbrains.jarl.JarlColorSettingsPage"/>
+
+		<externalAnnotator language="JARL" implementationClass="org.antlr.jetbrains.jarl.JarlExternalAnnotator"/>
+
+		<lang.findUsagesProvider language="JARL" implementationClass="org.antlr.jetbrains.jarl.JarlFindUsagesProvider"/>
+	</extensions>
+</idea-plugin>
